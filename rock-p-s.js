@@ -1,40 +1,32 @@
 function getComputerChoice() {
-    let choices = ['Rock','Paper','Scissors']
-    return choices[Math.floor(Math.random() * choices.length)];
+  let choices = ['rock','paper','scissors']
+  return choices[Math.floor(Math.random() * choices.length)];
 }
 
-console.log(getComputerChoice())
-let computerSelection = getComputerChoice()
+console.log(getComputerChoice());
 
-// Create function playRound to play single round of Rock Paper Scissors
-// playRound should have parameters (playerSelection, computerSelection)
-// Return a string that declares the winner of the round
-// Make playerSelection case-insensitive
-// Test with console.log
+const computerSelection = getComputerChoice()
+let getPlayerChoice = 'RoCk';
+const playerSelection = getPlayerChoice.toLowerCase();
 
-function playRound(playerSelection, computerSelection) {
-  if (playerSelection === "Rock" && computerSelection === "Paper"){
-    return "You lose! Paper beats rock."
+
+function playRound(playerSelection, computerSelection){
+  if ((playerSelection === 'rock' && computerSelection === 'scissors') ||
+      (playerSelection === 'paper' && computerSelection === 'rock') ||
+      (playerSelection === 'scissors' && computerSelection === 'paper')){
+    playerSelection = playerSelection[0].toUpperCase() + playerSelection.slice(1);
+    return `You win! ${playerSelection} beats ${computerSelection}.`
   }
-  else if (playerSelection === "Paper" && computerSelection === "Rock"){
-    return "You win! Paper beats rock."
-  }
-  else if (playerSelection === "Scissors" && computerSelection === "Paper"){
-    return "You win! Scissors beats paper."
-  }
-  else if (playerSelection === "Paper" && computerSelection === "Scissors"){
-    return "You lose! Scissors beats paper."
-  }
-  else if (playerSelection === "Rock" && computerSelection === "Scissors"){
-    return "You win! Rock beats scissors."
-  }
-  else if (playerSelection === "Scissors" && computerSelection === "Rock"){
-    return "You lose! Rock beats scissors."
+  else if(playerSelection === computerSelection){
+    return 'It\'s a tie!'
   }
   else {
-    return "Tie game!"
+    computerSelection = computerSelection[0].toUpperCase() + computerSelection.slice(1);
+    return `You lose! ${computerSelection} beats ${playerSelection}.`
   }
 }
+console.log(playRound(playerSelection, computerSelection))
+
 
 // Create new function called game
 // Call playRound inside of game to play a 5 round game using a loop
