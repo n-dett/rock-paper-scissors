@@ -3,18 +3,12 @@ function getComputerChoice() {
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
-
-const computerSelection = getComputerChoice()
-console.log(computerSelection)
-let getPlayerChoice = prompt("Enter rock, paper, or scissors")
-const playerSelection = getPlayerChoice.toLowerCase();
-
-
 function playRound(playerSelection, computerSelection){
   if ((playerSelection === 'rock' && computerSelection === 'scissors') ||
       (playerSelection === 'paper' && computerSelection === 'rock') ||
       (playerSelection === 'scissors' && computerSelection === 'paper')){
     playerSelection = playerSelection[0].toUpperCase() + playerSelection.slice(1);
+    playerScore++;
     return `You win! ${playerSelection} beats ${computerSelection}.`
   }
   else if(playerSelection === computerSelection){
@@ -22,14 +16,12 @@ function playRound(playerSelection, computerSelection){
   }
   else {
     computerSelection = computerSelection[0].toUpperCase() + computerSelection.slice(1);
+    computerScore++;
     return `You lose! ${computerSelection} beats ${playerSelection}.`
   }
 }
-console.log(playRound(playerSelection, computerSelection))
 
 
-// Create new function called game
-// Call playRound inside of game to play a 5 round game using a loop
 // game keeps score and reports a winner or loser at the end
 // Use console.log to display results of each round and winner at the end
 // Use prompt() to get input from the user
@@ -37,8 +29,19 @@ console.log(playRound(playerSelection, computerSelection))
 // Can change return value to something more useful
 // Can create more 'helper' functions if needed
 
+let playerScore = parseInt(0)
+let computerScore = parseInt(0)
+
 function game(){
   for (let i = 0; i < 5; i++){
-    playRound();
+    let playerSelection = prompt("Enter rock, paper, or scissors").toLowerCase();
+    const computerSelection = getComputerChoice();
+    console.log(computerSelection)
+    console.log(playRound(playerSelection, computerSelection));
+    console.log('Your score: ' + playerScore) 
+    console.log('Computer score: ' + computerScore)
+    
   }
 }
+
+console.log(game())
