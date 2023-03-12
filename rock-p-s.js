@@ -3,10 +3,10 @@ function getComputerChoice() {
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
-console.log(getComputerChoice());
 
 const computerSelection = getComputerChoice()
-let getPlayerChoice = 'RoCk';
+console.log(computerSelection)
+let getPlayerChoice = prompt("Enter rock, paper, or scissors")
 const playerSelection = getPlayerChoice.toLowerCase();
 
 
@@ -36,3 +36,9 @@ console.log(playRound(playerSelection, computerSelection))
 // Re-work previous functions if needed
 // Can change return value to something more useful
 // Can create more 'helper' functions if needed
+
+function game(){
+  for (let i = 0; i < 5; i++){
+    playRound();
+  }
+}
