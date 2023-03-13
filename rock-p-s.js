@@ -29,8 +29,8 @@ function playRound(playerSelection, computerSelection){
 // Can change return value to something more useful
 // Can create more 'helper' functions if needed
 
-let playerScore = parseInt(0)
-let computerScore = parseInt(0)
+let playerScore = 0;
+let computerScore = 0;
 
 function game(){
   for (let i = 0; i < 5; i++){
@@ -40,8 +40,14 @@ function game(){
     console.log(playRound(playerSelection, computerSelection));
     console.log('Your score: ' + playerScore) 
     console.log('Computer score: ' + computerScore)
-    
   }
+  
+  if (playerScore > computerScore){
+    console.log("You win best of 5!");
+    } else if (computerScore > playerScore){
+      console.log("Computer wins best of 5 :\(")
+    } else {console.log("It\'s a tie!")}
+  
 }
 
 console.log(game())
