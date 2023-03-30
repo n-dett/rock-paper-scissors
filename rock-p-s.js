@@ -21,26 +21,35 @@ function playRound(playerSelection, computerSelection){
   }
 }
 
-
-// game keeps score and reports a winner or loser at the end
-// Use console.log to display results of each round and winner at the end
-// Use prompt() to get input from the user
-// Re-work previous functions if needed
-// Can change return value to something more useful
-// Can create more 'helper' functions if needed
-
 let playerScore = 0;
 let computerScore = 0;
 
+
+/////////////////////////
+
+// Add click event listener to buttons
+const gameButtons = document.querySelectorAll('.gameButtons');
+gameButtons.forEach(function(btn){
+  btn.addEventListener('click', clickedButton);
+})
+// Log value of button
+function clickedButton(btn) {
+  console.log(btn.target.id);
+}
+
+////////////////////////
+
+
 function game(){
-  for (let i = 0; i < 5; i++){
-    let playerSelection = prompt("Enter rock, paper, or scissors").toLowerCase();
+  //for (let i = 0; i < 5; i++){
+    //let playerSelection = prompt("Enter rock, paper, or scissors").toLowerCase(); 
     const computerSelection = getComputerChoice();
-    console.log(computerSelection)
+    console.log(computerSelection);
+
     console.log(playRound(playerSelection, computerSelection));
     console.log('Your score: ' + playerScore) 
     console.log('Computer score: ' + computerScore)
-  }
+  //}
   
   if (playerScore > computerScore){
     console.log("You win best of 5!");
@@ -50,4 +59,4 @@ function game(){
   
 }
 
-console.log(game())
+// console.log(game())
