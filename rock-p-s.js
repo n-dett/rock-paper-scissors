@@ -1,6 +1,5 @@
 let results = document.querySelector("#results");
-let computerChoiceText = document.querySelector('#computer-choice-text');
-let playerChoiceText = document.querySelector('#player-choice-text');
+
 
 function getComputerChoice() {
   let choices = ['rock','paper','scissors']
@@ -28,8 +27,12 @@ gameBtns.forEach(btn => {
 
 ////////////////////////
 
-
+// Play one round of rock, paper, scissors and show result
 function playRound(playerSelection, computerSelection){
+  let computerChoiceText = document.querySelector('#computer-choice-text');
+  let playerChoiceText = document.querySelector('#player-choice-text');
+  let roundResultText = document.querySelector('#round-result-text');
+
   computerChoiceText.innerText = `Computer chose ${computerSelection}`;
   playerChoiceText.innerText = `You chose ${playerSelection}`;
 
@@ -38,15 +41,18 @@ function playRound(playerSelection, computerSelection){
       (playerSelection === 'scissors' && computerSelection === 'paper')){
     playerSelection = playerSelection[0].toUpperCase() + playerSelection.slice(1);
     playerScore++;
-    return `You win! ${playerSelection} beats ${computerSelection}.`
+    updateScoresText();
+    roundResultText.innerText = `Point for you! ${playerSelection} beats ${computerSelection}.`
   }
   else if(playerSelection === computerSelection){
-    return 'It\'s a tie!'
+    roundResultText.innerText = 'It\'s a tie!'
+    updateScoresText();
   }
   else {
     computerSelection = computerSelection[0].toUpperCase() + computerSelection.slice(1);
     computerScore++;
-    return `You lose! ${computerSelection} beats ${playerSelection}.`
+    roundResultText.innerText = `Point for computer. ${computerSelection} beats ${playerSelection}.`
+    updateScoresText();
   }
 }
 
@@ -54,6 +60,12 @@ let playerScore = 0;
 let computerScore = 0;
 
 
+function updateScoresText(){
+  let playerScoreText = document.querySelector('#player-score-text');
+  let computerScoreText = document.querySelector('#computer-score-text');
+  playerScoreText.innerText = `Your score: ${playerScore}`;
+  computerScoreText.innerText = `Computer score: ${computerScore}`;
+}
 
 
 
@@ -68,12 +80,15 @@ let computerScore = 0;
     //console.log('Computer score: ' + computerScore)
   //}
   
-  //if (playerScore > computerScore){
-    //console.log("You win best of 5!");
-    //} else if (computerScore > playerScore){
-      //console.log("Computer wins best of 5 :\(")
-    //} else {console.log("It\'s a tie!")}
+  // Play until either player or computer reaches 5 points
+  if (playerScore === 5){
+    console.log("You win the game!");
+    } else if (computerScore === 5){
+      console.log("Computer wins the game :\(")
+    }
   
 //}
 
 //console.log(game())
+
+// Make smaller functions and call them inside playRound
