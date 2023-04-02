@@ -12,32 +12,17 @@ function getComputerChoice() {
 
 /////////////////////////
 
-// Add event listener to player choice buttons
 const gameBtns = document.querySelectorAll('.gameBtns');
+
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
 
-let buttonClicked = false;
-
-function playerChoice(btn) {
-  rockBtn.addEventListener('click', () => {
-    buttonClicked = true;
-  })
-  paperBtn.addEventListener('click', () => {
-    buttonClicked = true;
-  })
-  scissorsBtn.addEventListener('click', () => {
-    buttonClicked = true;
-  })
-  if(buttonClicked == true){
-    return btn.id;
-  }
-}
-
+// Play round with correct button id
 gameBtns.forEach(btn => {
   btn.addEventListener('click', () => {
-    console.log(playRound(playerChoice(), getComputerChoice()));
+    console.log(btn.id);
+    console.log(playRound(btn.id, getComputerChoice()));
   })
 })
 
