@@ -1,6 +1,4 @@
-let results = document.querySelector("#results");
-
-
+// Random computer selection
 function getComputerChoice() {
   let choices = ['rock','paper','scissors']
   let computerChoice = choices[Math.floor(Math.random() * choices.length)]
@@ -31,7 +29,11 @@ gameBtns.forEach(btn => {
 function playRound(playerSelection, computerSelection){
   let computerChoiceText = document.querySelector('#computer-choice-text');
   let playerChoiceText = document.querySelector('#player-choice-text');
-  let roundResultText = document.querySelector('#round-result-text');
+  //let roundResultText = document.querySelector('#round-result-text');
+
+  let playerWins = false;
+  let computerWins = false;
+  let tieGame = false;
 
   computerChoiceText.innerText = `Computer chose ${computerSelection}`;
   playerChoiceText.innerText = `You chose ${playerSelection}`;
@@ -41,19 +43,22 @@ function playRound(playerSelection, computerSelection){
       (playerSelection === 'scissors' && computerSelection === 'paper')){
     playerSelection = playerSelection[0].toUpperCase() + playerSelection.slice(1);
     playerScore++;
-    updateScoresText();
-    roundResultText.innerText = `Point for you! ${playerSelection} beats ${computerSelection}.`
+    playerWinsText(playerSelection, computerSelection);
+    //roundResultText.innerText = `Point for you! ${playerSelection} beats ${computerSelection}.`
   }
   else if(playerSelection === computerSelection){
-    roundResultText.innerText = 'It\'s a tie!'
-    updateScoresText();
+    //roundResultText.innerText = 'It\'s a tie!'
+    tieGameText();
   }
   else {
     computerSelection = computerSelection[0].toUpperCase() + computerSelection.slice(1);
     computerScore++;
-    roundResultText.innerText = `Point for computer. ${computerSelection} beats ${playerSelection}.`
-    updateScoresText();
+    //roundResultText.innerText = `Point for computer. ${computerSelection} beats ${playerSelection}.`
+    computerWinsText(playerSelection, computerSelection);
   }
+
+  updateScoresText();
+  gameResult();
 }
 
 let playerScore = 0;
@@ -66,6 +71,23 @@ function updateScoresText(){
   playerScoreText.innerText = `Your score: ${playerScore}`;
   computerScoreText.innerText = `Computer score: ${computerScore}`;
 }
+
+function playerWinsText(playerSelection, computerSelection){
+  let roundResultText = document.querySelector('#round-result-text');
+    roundResultText.innerText = `Point for you! ${playerSelection} beats ${computerSelection}.`;
+} 
+  
+function tieGameText(){
+  let roundResultText = document.querySelector('#round-result-text');
+  roundResultText.innerText = 'It\'s a tie!';
+} 
+
+function computerWinsText(playerSelection, computerSelection) {
+  let roundResultText = document.querySelector('#round-result-text');
+  roundResultText.innerText = `Point for computer. ${computerSelection} beats ${playerSelection}.`;
+}
+
+
 
 
 
@@ -81,12 +103,14 @@ function updateScoresText(){
   //}
   
   // Play until either player or computer reaches 5 points
-  if (playerScore === 5){
-    console.log("You win the game!");
-    } else if (computerScore === 5){
-      console.log("Computer wins the game :\(")
-    }
-  
+  function gameResult(){
+    let gameResultText = document.querySelector('#game-result-text');
+    if (playerScore === 5){
+      gameResultText.innerText = "You win the game!";
+      } else if (computerScore === 5){
+        gameResultText.innerText = "Computer wins the game."
+      }
+  }
 //}
 
 //console.log(game())
