@@ -1,13 +1,4 @@
-// Random computer selection
-function getComputerChoice() {
-  let choices = ['rock','paper','scissors']
-  let computerChoice = choices[Math.floor(Math.random() * choices.length)]
-  console.log(computerChoice);
-  return computerChoice;
-}
-
 const gameBtns = document.querySelectorAll('.gameBtns');
-
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
@@ -15,7 +6,14 @@ const scissorsBtn = document.querySelector('#scissors');
 let playerScore = 0;
 let computerScore = 0;
 
-// Play round with correct button id
+function getComputerChoice() {
+  let choices = ['rock','paper','scissors']
+  let computerChoice = choices[Math.floor(Math.random() * choices.length)]
+  console.log(computerChoice);
+  return computerChoice;
+}
+
+// Play round with correct player choice
 gameBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     console.log(btn.id);
@@ -24,10 +22,7 @@ gameBtns.forEach(btn => {
   })
 
 
-
-////////////////////////
-
-// Play one round of rock, paper, scissors and show result
+// Play one round of rock, paper, scissors and show results
 function playRound(playerSelection, computerSelection){
 
   choicesText(playerSelection, computerSelection);
@@ -53,16 +48,26 @@ function playRound(playerSelection, computerSelection){
   gameIsOver();
 }
 
+ // Declare a winner of the game
+ function gameResult(){
+  let gameResultText = document.querySelector('#game-result-text');
+  if (playerScore === 5){
+    gameResultText.innerText = "You win the game!";
+    } else if (computerScore === 5){
+      gameResultText.innerText = "Computer wins the game."
+    }
+}
+
+// Disable game buttons when someone wins
 function gameIsOver(){
   gameBtns.forEach(btn => {
-  if(playerScore === 5 || computerScore === 5){
-    btn.disabled = true;
-  } 
+    if(playerScore === 5 || computerScore === 5){
+      btn.disabled = true;
+    } 
   })
 }
 
-
-
+// Updated results for each round
 function choicesText(playerSelection, computerSelection){
   let computerChoiceText = document.querySelector('#computer-choice-text');
   let playerChoiceText = document.querySelector('#player-choice-text');
@@ -92,12 +97,4 @@ function computerWinsText(playerSelection, computerSelection) {
   roundResultText.innerText = `Point for computer. ${computerSelection} beats ${playerSelection}.`;
 }
   
-  // Declare a winner once player or computer reaches 5 points
-  function gameResult(){
-    let gameResultText = document.querySelector('#game-result-text');
-    if (playerScore === 5){
-      gameResultText.innerText = "You win the game!";
-      } else if (computerScore === 5){
-        gameResultText.innerText = "Computer wins the game."
-      }
-  }
+ 
