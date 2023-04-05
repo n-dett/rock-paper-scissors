@@ -1,0 +1,23 @@
+body {
+    font-family: 'JetBrains Mono', sans-serif;
+    font-size: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.results, #computer-choice-text {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+#round-result-text, #game-result-text {
+    font-weight: bold;
+    font-size: 30px;
+}

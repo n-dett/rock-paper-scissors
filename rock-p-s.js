@@ -71,8 +71,8 @@ function gameIsOver(){
 function choicesText(playerSelection, computerSelection){
   let computerChoiceText = document.querySelector('#computer-choice-text');
   let playerChoiceText = document.querySelector('#player-choice-text');
-  computerChoiceText.innerText = `Computer chose ${computerSelection}`;
-  playerChoiceText.innerText = `You chose ${playerSelection}`;
+  computerChoiceText.innerText = `Computer chose ${computerSelection}.`;
+  playerChoiceText.innerText = `You chose ${playerSelection}.`;
 }
 
 function updateScoresText(){

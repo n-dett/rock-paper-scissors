@@ -5,18 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,800&display=swap" rel="stylesheet">
     <script src="rock-p-s.js" defer></script>
 </head>
 <body>
+  
+<p id="computer-choice-text"></p>
+  
+ <div id="player-choices">
     <button class="gameBtns" id="rock">Rock</button>
     <button class="gameBtns" id="paper">Paper</button>
     <button class="gameBtns" id="scissors">Scissors</button>
-
-    <div id="results">
-      <div id="selections">
-        <p id="computer-choice-text"></p>
-        <p id="player-choice-text"></p>
-      </div>
+  </div>
+    <div class="results">
+      <p id="player-choice-text"></p>
       <div id="round-result">
         <p id="round-result-text"></p>
       </div>
