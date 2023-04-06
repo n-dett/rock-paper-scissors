@@ -1,6 +1,6 @@
 body {
     font-family: 'JetBrains Mono', sans-serif;
-    font-size: 20px;
+    font-size: 22px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -9,15 +9,69 @@ body {
     flex: 1;
 }
 
-.results, #computer-choice-text {
+h1 {
+    margin-bottom: 65px;
+    font-weight: 800;
+    margin-top: -25px;
+}
+
+.player-choices {
+    display: flex;
+    gap: 50px;
+
+}
+
+img, button {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+}
+
+.player-choices button {
+    border: none;
+} 
+
+.player-choices button {
+    transition: transform 7s ease-in-out;
+}
+
+
+img {
+    border: 3px solid #000000;
+}
+
+.choices {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.score {
+    display: flex;
+    gap: 24px;
+    border: 2px solid black;
+    padding: 12px;
+}
+
+.score p {
+    margin: 0;
+}
+
+.results {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    margin-top: -25px;
+    
 }
 
 #round-result-text, #game-result-text {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 30px;
 }

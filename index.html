@@ -12,22 +12,30 @@
     <script src="rock-p-s.js" defer></script>
 </head>
 <body>
-  
-<p id="computer-choice-text"></p>
-  
- <div id="player-choices">
-    <button class="gameBtns" id="rock">Rock</button>
-    <button class="gameBtns" id="paper">Paper</button>
-    <button class="gameBtns" id="scissors">Scissors</button>
+<h1>Rock, Paper, Scissors</h1>
+
+ <div class="player-choices">
+    <button class="gameBtns" id="rock">
+      <img src="./images/rock.jpg" alt="Rock">
+    </button>
+    <button class="gameBtns" id="paper">
+      <img src = "./images/paper.jpg" alt="Paper">
+    </button>
+    <button class="gameBtns" id="scissors">
+      <img src = "./images/scissors.jpg" alt="Scissors">
+    </button>
   </div>
-    <div class="results">
+    <div class ="choices">
       <p id="player-choice-text"></p>
+      <p id="computer-choice-text"></p>
+    </div>
+    <div class="results">
       <div id="round-result">
-        <p id="round-result-text"></p>
+        <p id="round-result-text">Make a selection.</p>
       </div>
-      <div id="score">
-        <p id="player-score-text"></p>
-        <p id="computer-score-text"></p>
+      <div class="score">
+        <p id="player-score-text">Your score: 0</p>
+        <p id="computer-score-text">Computer score: 0</p>
       </div>
       <div id="game-result">
         <p id="game-result-text"></p>
