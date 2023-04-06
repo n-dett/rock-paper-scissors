@@ -18,6 +18,10 @@ h1 {
 .player-choices {
     display: flex;
     gap: 50px;
+}
+
+.player-choices button:active {
+    transform: scale(.99);
 
 }
 
@@ -31,11 +35,8 @@ img, button {
 
 .player-choices button {
     border: none;
+    cursor: pointer;
 } 
-
-.player-choices button {
-    transition: transform 7s ease-in-out;
-}
 
 
 img {
@@ -55,10 +56,21 @@ img {
     gap: 24px;
     border: 2px solid black;
     padding: 12px;
+    align-items: center;
 }
 
 .score p {
     margin: 0;
+}
+
+#player-score-text {
+    background-color: rgb(156, 238, 156);
+    padding: 5px 20px;
+}
+
+#computer-score-text {
+    background-color: rgb(146, 226, 250);
+    padding: 5px 20px;
 }
 
 .results {
