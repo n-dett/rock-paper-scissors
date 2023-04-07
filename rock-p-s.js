@@ -13,13 +13,44 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-// Play round with correct player choice
+// Blue circle outline for computer
+
+// (Old) Play round with correct player choice and toggle outline
+// gameBtns.forEach(btn => {
+//   btn.addEventListener('click', () => {
+//     btn.classList.toggle("current-player-choice");
+//     console.log(btn.id);
+//     console.log(playRound(btn.id, getComputerChoice()));
+//     })
+//   })
+
+
+// (New) Play round on click
+gameBtns.forEach(btn => {
+  btn.addEventListener('click', playRoundEvent);
+})
+
+// (New) Green circle outline for player
 gameBtns.forEach(btn => {
   btn.addEventListener('click', () => {
-    console.log(btn.id);
-    console.log(playRound(btn.id, getComputerChoice()));
-    })
+    btn.classList.toggle("current-player-choice");
   })
+  btn.addEventListener('mousedown', () => {
+    btn.classList.add('active');
+  });
+  btn.addEventListener('mouseup', () => {
+    btn.classList.remove('active');
+  });
+})
+
+
+
+// Play round
+function playRoundEvent() {
+    console.log(this.id);
+    console.log(playRound(this.id, getComputerChoice()));
+  }
+
 
 
 // Play one round of rock, paper, scissors and show results
@@ -49,8 +80,8 @@ function playRound(playerSelection, computerSelection){
 }
 
  // Declare a winner of the game
- function gameResult(){
-  let gameResultText = document.querySelector('#game-result-text');
+function gameResult(){
+ let gameResultText = document.querySelector('#game-result-text');
   if (playerScore === 5){
     gameResultText.innerText = "You win the game!";
     } else if (computerScore === 5){
@@ -62,8 +93,9 @@ function playRound(playerSelection, computerSelection){
 function gameIsOver(){
   gameBtns.forEach(btn => {
     if(playerScore === 5 || computerScore === 5){
-      btn.disabled = true;
-    } 
+      btn.removeEventListener('click', playRoundEvent);
+      btn.classList.remove('active');
+    }
   })
 }
 
