@@ -36,10 +36,10 @@ gameBtns.forEach(btn => {
     btn.classList.toggle("current-player-choice");
   })
   btn.addEventListener('mousedown', () => {
-    btn.classList.add('active');
+    btn.classList.add('transform');
   });
   btn.addEventListener('mouseup', () => {
-    btn.classList.remove('active');
+    btn.classList.remove('transform');
   });
 })
 
@@ -94,7 +94,7 @@ function gameIsOver(){
   gameBtns.forEach(btn => {
     if(playerScore === 5 || computerScore === 5){
       btn.removeEventListener('click', playRoundEvent);
-      btn.classList.remove('active');
+      btn.classList.add('original-size');
     }
   })
 }
