@@ -13,20 +13,33 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-// Blue circle outline for computer
-function computerCircleOutline(computerSelection) {
-  if(computerSelection === 'rock'){
-    rockBtn.classList.toggle('current-computer-choice');
+// Blue circle outline for current computer selection
+// function computerCircleOutline(computerSelection) {
+//   if(computerSelection === 'rock'){
+//     rockBtn.classList.toggle('current-computer-choice');
+//   }
+//   if(computerSelection === 'paper'){
+//     paperBtn.classList.toggle('current-computer-choice');
+//   }
+//   if(computerSelection === 'scissors'){
+//     scissorsBtn.classList.toggle('current-computer-choice');
+//   }
+// }
+
+// Add circle outlines for player and computer selections
+function newCircleOutline(selection, className) {
+  if(selection === 'rock'){
+    rockBtn.classList.toggle(className);
   }
-  if(computerSelection === 'paper'){
-    paperBtn.classList.toggle('current-computer-choice');
+  if(selection === 'paper'){
+    paperBtn.classList.toggle(className);
   }
-  if(computerSelection === 'scissors'){
-    scissorsBtn.classList.toggle('current-computer-choice');
+  if(selection === 'scissors'){
+    scissorsBtn.classList.toggle(className);
   }
 }
 
-// Outline for when player and computer make the same selection
+// Orange outline for when player and computer make the same selection
 function tieCircleOutline(playerSelection, computerSelection) {
   if(playerSelection === 'rock' && computerSelection === 'rock') {
     rockBtn.classList.toggle('same-choice-outline');
@@ -37,19 +50,19 @@ function tieCircleOutline(playerSelection, computerSelection) {
   }
 }
 
+
 // Play round on click
 gameBtns.forEach(btn => {
   btn.addEventListener('click', playRoundEvent);
 })
 
-
+// Remove outlines for previous selections
 function removeOutlines() {
   removeEachOutline('current-player-choice');
   removeEachOutline('current-computer-choice');
   removeEachOutline('same-choice-outline');
 }
 
-// Remove outlines for previous selections
 function removeEachOutline(currentChoiceOutline) {
   if(rockBtn.classList.contains(currentChoiceOutline)) {
      rockBtn.classList.toggle(currentChoiceOutline);
@@ -60,15 +73,6 @@ function removeEachOutline(currentChoiceOutline) {
   if(scissorsBtn.classList.contains(currentChoiceOutline)) {
     scissorsBtn.classList.toggle(currentChoiceOutline);
   } 
-}
-
-// Add player current player selection outline
-gameBtns.forEach(btn => {
-  btn.addEventListener('click', currentPlayerOutline);
-})
-
-function currentPlayerOutline() {
-  this.classList.toggle('current-player-choice');
 }
 
 
@@ -90,12 +94,13 @@ function playRoundEvent() {
   }
 
 
-// Play one round of rock, paper, scissors and show results
+// Play one round and show results
 function playRound(playerSelection, computerSelection){
   
   removeOutlines(playerSelection, computerSelection);
+  newCircleOutline(playerSelection, 'current-player-choice');
+  newCircleOutline(computerSelection, 'current-computer-choice');
   tieCircleOutline(playerSelection, computerSelection);
-  computerCircleOutline(computerSelection);
   choicesText(playerSelection, computerSelection);
 
   if ((playerSelection === 'rock' && computerSelection === 'scissors') ||
@@ -117,9 +122,11 @@ function playRound(playerSelection, computerSelection){
   updateScoresText();
   gameResult();
   gameIsOver();
+
 }
 
- // Declare a winner of the game
+
+// Declare a winner of the game
 function gameResult(){
  let gameResultText = document.querySelector('#game-result-text');
   if (playerScore === 5){
@@ -136,7 +143,6 @@ function gameIsOver(){
       btn.removeEventListener('click', playRoundEvent);
       btn.classList.add('original-size');
       btn.removeEventListener('click', removeOutlines);
-      btn.removeEventListener('click', currentPlayerOutline);
     }
   })
 }
