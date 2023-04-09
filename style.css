@@ -29,7 +29,7 @@ h1 {
     transform: none;
 }
 
-img {
+.gameBtns {
     width: 250px;
     height: 250px;
     border-radius: 50%;
@@ -95,7 +95,7 @@ img {
     outline-offset: 5px;
 }
 
-.same-choice {
-    outline: 5px solid rgb(215, 192, 45);
+.same-choice-outline {
+    outline: 5px solid rgb(230, 200, 8);
     outline-offset: 5px;
 }
