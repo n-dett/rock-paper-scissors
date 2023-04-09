@@ -15,26 +15,22 @@ function getComputerChoice() {
 
 // Blue circle outline for computer
 
-// (Old) Play round with correct player choice and toggle outline
-// gameBtns.forEach(btn => {
-//   btn.addEventListener('click', () => {
-//     btn.classList.toggle("current-player-choice");
-//     console.log(btn.id);
-//     console.log(playRound(btn.id, getComputerChoice()));
-//     })
-//   })
 
-
-// (New) Play round on click
+// Play round on click
 gameBtns.forEach(btn => {
   btn.addEventListener('click', playRoundEvent);
 })
 
-// (New) Green circle outline for player
+// Add green circle to current player selection
 gameBtns.forEach(btn => {
   btn.addEventListener('click', () => {
-    btn.classList.toggle("current-player-choice");
+    removePlayerCircle();
+    btn.classList.toggle('current-player-choice');
   })
+})
+
+// Scale image when clicked
+gameBtns.forEach(btn => {
   btn.addEventListener('mousedown', () => {
     btn.classList.add('transform');
   });
@@ -42,6 +38,19 @@ gameBtns.forEach(btn => {
     btn.classList.remove('transform');
   });
 })
+
+// Remove existing green circle outline
+function removePlayerCircle() {
+  if(rockBtn.classList.contains('current-player-choice')) {
+     rockBtn.classList.toggle('current-player-choice');
+  } 
+  if(paperBtn.classList.contains('current-player-choice')) {
+    paperBtn.classList.toggle('current-player-choice');
+  } 
+  if(scissorsBtn.classList.contains('current-player-choice')) {
+    scissorsBtn.classList.toggle('current-player-choice');
+  } 
+}
 
 
 
