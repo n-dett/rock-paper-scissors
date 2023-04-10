@@ -13,18 +13,6 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-// Blue circle outline for current computer selection
-// function computerCircleOutline(computerSelection) {
-//   if(computerSelection === 'rock'){
-//     rockBtn.classList.toggle('current-computer-choice');
-//   }
-//   if(computerSelection === 'paper'){
-//     paperBtn.classList.toggle('current-computer-choice');
-//   }
-//   if(computerSelection === 'scissors'){
-//     scissorsBtn.classList.toggle('current-computer-choice');
-//   }
-// }
 
 // Add circle outlines for player and computer selections
 function newCircleOutline(selection, className) {
@@ -55,6 +43,7 @@ function tieCircleOutline(playerSelection, computerSelection) {
 gameBtns.forEach(btn => {
   btn.addEventListener('click', playRoundEvent);
 })
+
 
 // Remove outlines for previous selections
 function removeOutlines() {
@@ -138,16 +127,24 @@ function gameResult(){
 
 // Disable game buttons when someone wins
 function gameIsOver(){
+  const modal = document.querySelector('.modal-background');
   gameBtns.forEach(btn => {
     if(playerScore === 5 || computerScore === 5){
       btn.removeEventListener('click', playRoundEvent);
       btn.classList.add('original-size');
       btn.removeEventListener('click', removeOutlines);
+      modal.style.display = "flex";
     }
   })
 }
 
-// Updated results for each round
+// Restart game on click
+let restartGameBtn = document.querySelector('#restart-game-button');
+restartGameBtn.addEventListener('click', () => {
+  location.reload();
+});
+
+// Updated results text for each round
 function choicesText(playerSelection, computerSelection){
   let computerChoiceText = document.querySelector('#computer-choice-text');
   let playerChoiceText = document.querySelector('#player-choice-text');
